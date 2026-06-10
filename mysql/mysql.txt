@@ -1,0 +1,73 @@
+CREATE DATABASE recettes_partagees;
+USE recettes_partagees;
+
+-- Table des membres
+CREATE TABLE membre (
+    id_membre INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    role ENUM('admin','membre') DEFAULT 'membre'
+);
+
+-- Table des catégories
+CREATE TABLE categorie (
+    id_categorie INT AUTO_INCREMENT PRIMARY KEY,
+    nom_categorie VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Table des recettes
+CREATE TABLE recette (
+    id_recette INT AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    ingredients TEXT NOT NULL,
+    preparation TEXT NOT NULL,
+    photo VARCHAR(100),
+    date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    id_membre INT NOT NULL,
+    id_categorie INT NOT NULL,
+
+    FOREIGN KEY (id_membre)
+        REFERENCES membre(id_membre)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (id_categorie)
+        REFERENCES categorie(id_categorie)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
+
+-- Table des notes
+CREATE TABLE note (
+    id_note INT AUTO_INCREMENT PRIMARY KEY,
+    valeur INT NOT NULL,
+    commentaire TEXT,
+    date_note DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    id_membre INT NOT NULL,
+    id_recette INT NOT NULL,
+
+    FOREIGN KEY (id_membre)
+        REFERENCES membre(id_membre)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+
+    FOREIGN KEY (id_recette)
+        REFERENCES recette(id_recette)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- Catégories par défaut
+INSERT INTO categorie (nom_categorie) VALUES
+('Entrée'),
+('Plat principal'),
+('Dessert'),
+('Boisson'),
+('Salade'),
+('Soupe'),
+('Snack');
