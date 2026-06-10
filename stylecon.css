@@ -1,0 +1,65 @@
+form{
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #F9F9F9;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+}
+
+input, select{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px ;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+h2{
+    text-align: center;
+}
+
+button{
+    width: 40%;
+    padding: 10px;
+    background-color: #1500ff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #00b351;
+    letter-spacing: 2px;
+}
+
+a{
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.bloc{
+    display: flex;
+    justify-content: center;
+}
+.info{
+    text-align: center;
+    color: red;
+}
+.sexe{
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+.sexe[type="radio"]{
+    accent-color: #007bff;
+    margin-right: 5px;
+    width: 18px;
+    height: 18px;
+}
