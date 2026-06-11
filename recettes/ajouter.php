@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($message)) { // S'il n'y a pas eu d'erreur d'extension d'image
             try {
                 $stmt = $pdo->prepare("
-                    INSERT INTO recette (titre, description, ingredients, preparation, photo, id_membre, id_categorie) 
+                    INSERT INTO recette (titre, description, ingredients, preparation, photo, id_utilisateur, id_categorie) 
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 ");
                 $stmt->execute([$titre, $description, $ingredients, $preparation, $nom_photo, $id_membre, $id_categorie]);
