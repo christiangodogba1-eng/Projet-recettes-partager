@@ -19,14 +19,14 @@ $recettes = $pdo->query("
     SELECT r.id_recette, r.titre, r.date_publication, c.nom_categorie, u.prenom, u.nom 
     FROM recette r 
     INNER JOIN categorie c ON r.id_categorie = c.id_categorie 
-    INNER JOIN utilisateur u ON r.id_membre = u. id_utilisateur
+    INNER JOIN utilisateur u ON r.id_utilisateur = u. id_utilisateur
     ORDER BY r.date_publication DESC
 ")->fetchAll();
 
 $membres = $pdo->query("SELECT id_utilisateur, prenom, nom, email, role FROM utilisateur ORDER BY nom ASC")->fetchAll();
 
 $notes = $pdo->query("
-    SELECT n.id_note, n.valeur, n.commentaire, n.date_note, m.prenom, r.titre as recette_titre 
+    SELECT n.id_note, n.valeur, n.commentaire, n.date_note, u.prenom, r.titre as recette_titre 
     FROM note n 
     INNER JOIN utilisateur u ON n.id_utilisateur = u.id_utilisateur 
     INNER JOIN recette r ON n.id_recette = r.id_recette 
