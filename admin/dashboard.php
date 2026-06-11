@@ -19,7 +19,7 @@ $recettes = $pdo->query("
     SELECT r.id_recette, r.titre, r.date_publication, c.nom_categorie, u.prenom, u.nom 
     FROM recette r 
     INNER JOIN categorie c ON r.id_categorie = c.id_categorie 
-    INNER JOIN utilisateur u ON r.id_membre = u. id_utilisateur
+    INNER JOIN utilisateur u ON r.id_utilisateur = u. id_utilisateur
     ORDER BY r.date_publication DESC
 ")->fetchAll();
 
