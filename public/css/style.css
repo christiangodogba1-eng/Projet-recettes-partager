@@ -1,0 +1,33 @@
+/* public/css/style.css */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #d94f2b !important;
+}
+
+.card-auth {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary-cuisine {
+    background-color: #d94f2b;
+    border-color: #d94f2b;
+    color: white;
+}
+
+.btn-primary-cuisine:hover {
+    background-color: #b83c1b;
+    border-color: #b83c1b;
+    color: white;
+}
+
+.bg-cuisine {
+    background-color: #fff3cd !important;
+    color: #856404;
+}
