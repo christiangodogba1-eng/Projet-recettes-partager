@@ -22,7 +22,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     try {
         // 1. Récupérer les photos des recettes créées par ce membre pour nettoyer le serveur
-        $stmtPhotos = $pdo->prepare("SELECT photo FROM recette WHERE id_membre = ? AND photo IS NOT NULL");
+        $stmtPhotos = $pdo->prepare("SELECT photo FROM recette WHERE id_utilisateur = ? AND photo IS NOT NULL");
         $stmtPhotos->execute([$id_membre_a_supprimer]);
         $recettes = $stmtPhotos->fetchAll();
 
@@ -38,7 +38,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
         // 3. Supprimer le membre de la base de données
         // (La contrainte ON DELETE CASCADE supprimera automatiquement ses recettes et ses notes de la BDD)
-        $stmtDelete = $pdo->prepare("DELETE FROM membre WHERE id_membre = ?");
+        $stmtDelete = $pdo->prepare("DELETE FROM membre WHERE id_utilisateur = ?");
         $stmtDelete->execute([$id_membre_a_supprimer]);
 
     } catch (PDOException $e) {
